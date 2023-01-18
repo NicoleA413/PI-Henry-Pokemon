@@ -10,21 +10,27 @@ module.exports = (sequelize) => {
     },
     health: {
       type: DataTypes.INTEGER,
+      defaultValue: 100
     },
     damage: {
       type: DataTypes.INTEGER,
+      defaultValue: 10
     },
     def: {
       type: DataTypes.INTEGER,
+      defaultValue: 10
     },
     speed: {
       type: DataTypes.INTEGER,
+      defaultValue: 10
     },
     height: {
       type: DataTypes.INTEGER,
+      defaultValue: 10
     },    
     weight: {
       type: DataTypes.INTEGER,
+      defaultValue: 10
     },    
   },{timestamps: false});
 };

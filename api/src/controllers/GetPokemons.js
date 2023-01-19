@@ -3,12 +3,12 @@ const { Pokemon } = require("../db");
 
 const shorterArray = (array) =>
     array.map((e) => {
-        const hp = e.stats[0].base_stat
-        const attack = e.stats[1].base_stat
-        const defence = e.stats[2].base_stat
-        const speed = e.stats[3].base_stat
+        const hp = e.stats[0].base_stat;
+        const attack = e.stats[1].base_stat;
+        const defence = e.stats[2].base_stat;
+        const speed = e.stats[5].base_stat;
 
-        const shorter = {
+        return {
             id: e.id,
             name: e.name,
             hp: hp,
@@ -17,9 +17,7 @@ const shorterArray = (array) =>
             speed: speed,
             height: e.height,
             weight: e.weight,
-        }
-
-        return shorter
+        };
     });
 
 

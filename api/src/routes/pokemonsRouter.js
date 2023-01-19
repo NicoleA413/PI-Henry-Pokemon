@@ -1,20 +1,16 @@
-const { Router } = require ("express")
-const { GetPokemonsHandler } = require ("../handlers/PokemonsHandler")
+const { Router } = require ("express");
+const { GetPokemonsHandler } = require ("../handlers/PokemonsHandler");
 
-const pokemonsRouter = Router()
+const pokemonsRouter = Router();
 
-pokemonsRouter.get("/" , GetPokemonsHandler )
-
-pokemonsRouter.get("/?name", (req, res) => {
-    res.send("name")
-})
+pokemonsRouter.get("/" , GetPokemonsHandler );
 
 pokemonsRouter.get("/:id", (req, res) => {
-    res.send("id")
-})
+    res.send("id");
+});
 
 pokemonsRouter.post("/", (req, res) => {
-    res.send("post pokemon")
-})
+    res.send("post pokemon");
+});
 
-module.exports = pokemonsRouter
+module.exports = pokemonsRouter;

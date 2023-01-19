@@ -5,11 +5,12 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoscalable: true,
+      autoIncrement: true,
     },
     name: {
       type: DataTypes.STRING,
       defaultValue: "Anonymus"
     },
-  });
+  },
+  {timestamps: false});
 }

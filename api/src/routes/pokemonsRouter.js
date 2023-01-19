@@ -1,16 +1,16 @@
 const { Router } = require ("express")
+const { GetPokemonsHandler } = require ("../handlers/PokemonsHandler")
+
 const pokemonsRouter = Router()
 
-pokemonsRouter.get("/" , (req, res) =>{
-    res.send("pokemons")
+pokemonsRouter.get("/" , GetPokemonsHandler )
+
+pokemonsRouter.get("/?name", (req, res) => {
+    res.send("name")
 })
 
 pokemonsRouter.get("/:id", (req, res) => {
     res.send("id")
-})
-
-pokemonsRouter.get("/?name", (req, res) => {
-    res.send("name")
 })
 
 pokemonsRouter.post("/", (req, res) => {

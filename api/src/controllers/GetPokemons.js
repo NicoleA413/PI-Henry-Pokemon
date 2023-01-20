@@ -1,33 +1,5 @@
-const axios = require ("axios");
 const { Pokemon } = require("../db");
-
-const shorterArray = (array) =>
-    array.map((e) => {
-        const hp = e.stats[0].base_stat;
-        const attack = e.stats[1].base_stat;
-        const defence = e.stats[2].base_stat;
-        const speed = e.stats[5].base_stat;
-
-        return {
-            id: e.id,
-            name: e.name,
-            hp: hp,
-            attack: attack,
-            defence: defence,
-            speed: speed,
-            height: e.height,
-            weight: e.weight,
-        };
-    });
-
-
-const api = async () => {
-    const results = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=40");
-
-    const pokemon = results.data.results.map((poke) => axios.get(poke.url));
-
-    return (await Promise.all(pokemon)).map((poke) => poke.data);
-}
+const {api, shorterArray } = require("./utils")
 
 const GetPokemons = async () => {
     const apiArray = await api ();
@@ -38,4 +10,16 @@ const GetPokemons = async () => {
     return [...apiList, ...dbList];
 }
 
-module.exports = GetPokemons
+const GetPokemonByName = async (name) => {
+    const pokeByName = (await GetPokemons()).find((poke) => poke.name === name);
+    if(!pokeByName) throw Error (`No existe un Pokemon llamado ${name}`)
+    return pokeByName;
+};
+
+const GetPokemonById = async (id) => {
+    const pokeById = (await GetPokemons()).find((poke) => poke.id == id);
+    if (!pokeById) throw Error (`No existe un Pokemon con el id ${id}`)
+    return pokeById;
+};
+
+module.exports = { GetPokemons, GetPokemonByName, GetPokemonById };

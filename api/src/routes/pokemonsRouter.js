@@ -1,16 +1,12 @@
 const { Router } = require ("express");
-const { GetPokemonsHandler } = require ("../handlers/PokemonsHandler");
+const { GetPokemonsHandler, PokemonByIdHandler, CreatePokemonHandler } = require ("../handlers/PokemonsHandler");
 
 const pokemonsRouter = Router();
 
 pokemonsRouter.get("/" , GetPokemonsHandler );
 
-pokemonsRouter.get("/:id", (req, res) => {
-    res.send("id");
-});
+pokemonsRouter.get("/:id", PokemonByIdHandler );
 
-pokemonsRouter.post("/", (req, res) => {
-    res.send("post pokemon");
-});
+pokemonsRouter.post("/", CreatePokemonHandler );
 
 module.exports = pokemonsRouter;

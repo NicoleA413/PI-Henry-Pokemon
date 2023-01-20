@@ -19,19 +19,19 @@ module.exports = (sequelize) => {
     },
     hp: {
       type: DataTypes.INTEGER,
-      defaultValue: 100
+      defaultValue: 50
     },
     attack: {
       type: DataTypes.INTEGER,
-      defaultValue: 10
+      defaultValue: 50
     },
     defence: {
       type: DataTypes.INTEGER,
-      defaultValue: 10
+      defaultValue: 50
     },
     speed: {
       type: DataTypes.INTEGER,
-      defaultValue: 10
+      defaultValue: 40
     },
     height: {
       type: DataTypes.INTEGER,
@@ -39,7 +39,7 @@ module.exports = (sequelize) => {
     },    
     weight: {
       type: DataTypes.INTEGER,
-      defaultValue: 10
+      defaultValue: 100
     },    
   },
   {timestamps: false});

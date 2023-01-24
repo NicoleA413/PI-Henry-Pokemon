@@ -66,6 +66,13 @@ module.exports = (sequelize) => {
         max: 1000,
       },
     },
+
+    image: {
+      type: DataTypes.STRING(1000),
+      isUrl: true,
+      defaultValue: 
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png"
+    },
     
   },
   {timestamps: false});

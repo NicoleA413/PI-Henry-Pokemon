@@ -26,6 +26,7 @@ const shorterArray = (array) =>
             speed: e.stats[5].base_stat,
             height: e.height,
             weight: e.weight,
+            image: e.sprites.other.dream_world.front_default,
             types: e.types.map((t) => t.type.name),
         };
     });

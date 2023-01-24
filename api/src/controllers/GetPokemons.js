@@ -1,17 +1,16 @@
-const { Pokemon } = require("../db");
-const {api, shorterArray } = require("./utils")
+const { api, shorterArray, getDb } = require("./utils")
 
 const GetPokemons = async () => {
     const apiArray = await api ();
     const apiList = shorterArray(apiArray);
-    const dbList = await Pokemon.findAll();
-    
+    const dbList = await getDb()
+
     // return(apiArray);
     return [...apiList, ...dbList];
 }
 
 const GetPokemonByName = async (name) => {
-    const pokeByName = (await GetPokemons()).find((poke) => poke.name === name);
+    const pokeByName = (await GetPokemons()).find((poke) => poke.name === name.toLowerCase());
     if(!pokeByName) throw Error (`No existe un Pokemon llamado ${name}`)
     return pokeByName;
 };

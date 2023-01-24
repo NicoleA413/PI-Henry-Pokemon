@@ -40,7 +40,8 @@ module.exports = (sequelize) => {
     weight: {
       type: DataTypes.INTEGER,
       defaultValue: 100
-    },    
+    },
+    
   },
   {timestamps: false});
 };

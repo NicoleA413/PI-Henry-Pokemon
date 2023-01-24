@@ -1,17 +1,28 @@
-const { Pokemon } = require("../db");
+const { Pokemon, Type } = require("../db");
+const { GetTypes } = require("../controllers/GetTypes");
 
-const CreatePokemon = async(name, hp, attack, defence, speed, height, weight) => {
-    const newPokemon = Pokemon.create({
-        name: name,
-        hp: hp,
-        attack: attack, 
-        defence: defence, 
-        speed: speed, 
-        height: height, 
-        weight: weight,
-    });
+const CreatePokemon = async(name, hp, attack, defence, speed, height, weight, types) => {
+    if (name && types.length) {
+        const createPokemon = await Pokemon.create({
+          name,
+          hp,
+          attack,
+          defence,
+          speed,
+          height,
+          weight,
+        });
 
-    return newPokemon;
+        await GetTypes()
+
+        const typeDb = await Type.findAll({
+          where: { name: types },
+        });
+  
+        createPokemon.addType(typeDb);
+    } else {
+        throw Error("Faltan datos necesarios para crear el Pokemon")
+    }
 };
 
 module.exports = CreatePokemon

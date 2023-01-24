@@ -6,7 +6,7 @@ const GetPokemons = async () => {
     const dbList = await getDb()
 
     // return(apiArray);
-    return [...apiList, ...dbList];
+    return [ ...dbList, ...apiList];
 }
 
 const GetPokemonByName = async (name) => {

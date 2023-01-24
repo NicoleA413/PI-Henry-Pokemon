@@ -10,13 +10,9 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV1,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20),
       allowNull: false,
       unique: true,
-      validate: {
-        min: 2,
-        max: 20,
-      },
     },
     hp: {
       type: DataTypes.INTEGER,
@@ -72,6 +68,11 @@ module.exports = (sequelize) => {
       isUrl: true,
       defaultValue: 
       "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png"
+    },
+
+    created: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
     },
     
   },

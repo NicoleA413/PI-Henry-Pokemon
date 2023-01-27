@@ -1,16 +1,16 @@
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getPokemons } from "../../redux/actions";
+// import { useEffect } from "react";
+// import { useDispatch } from "react-redux";
+// import { getPokemons } from "../../redux/actions";
 import Cards from "../../components/Cards/Cards";
 
 
 const Home = () => {
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-    useEffect(()=>{
-        dispatch(getPokemons());
-    },[dispatch]);
+    // useEffect(()=>{
+    //     dispatch(getPokemons());
+    // },[dispatch]);
 
     return (
         <>

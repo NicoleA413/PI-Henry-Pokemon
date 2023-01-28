@@ -1,6 +1,6 @@
 import './App.css';
 import { Route, useLocation } from 'react-router-dom';
-import { Home, Landing, Form, Detail } from './views';
+import { Home, Landing, Form, Detail, Edit } from './views';
 import NavBar from './components/NavBar/NavBar';
 
 function App() {
@@ -15,16 +15,20 @@ function App() {
         <Landing />    
       </Route>
 
-      <Route path='/home'>
+      <Route exact path='/home'>
         <Home /> 
       </Route>
 
-      <Route path='/detail'>
+      <Route exact path='/create'>
+        <Form /> 
+      </Route>
+
+      <Route exact path='/pokemons/:id'>
         <Detail /> 
       </Route>
 
-      <Route path='/create'>
-        <Form /> 
+      <Route exact path='/pokemons/edit/:id'>
+        <Edit /> 
       </Route>
 
     </div>

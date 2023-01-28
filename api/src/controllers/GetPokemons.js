@@ -10,7 +10,7 @@ const GetPokemons = async () => {
 }
 
 const GetPokemonByName = async (name) => {
-    const pokeByName = (await GetPokemons()).find((poke) => poke.name === name.toLowerCase());
+    const pokeByName = (await GetPokemons()).find((poke) => poke.name.toLowerCase() === name.toLowerCase());
     if(!pokeByName) throw Error (`No existe un Pokemon llamado ${name}`)
     return pokeByName;
 };

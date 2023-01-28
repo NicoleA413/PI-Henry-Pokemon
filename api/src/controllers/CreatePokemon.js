@@ -11,7 +11,7 @@ const CreatePokemon = async(name, hp, attack, defence, speed, height, weight, im
     imageUrl =
    "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png";
   }
-  if (name && types.length) {
+  if (name && types) {
    const createPokemon = await Pokemon.create({
     name,
     hp,

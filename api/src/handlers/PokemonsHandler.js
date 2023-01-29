@@ -37,9 +37,9 @@ const CreatePokemonHandler = async (req, res) => {
 const UpdatePokemonHandler = async (req, res) => {
   try {
     const {id} = req.params;
-    const {name, hp, attack, defence, speed, height, weight, types} = req.body;
-    const UpdatedPokemon = await UpdatePokemon(id, name, hp, attack, defence, speed, height, weight, types);
-    res.status(200).send(UpdatedPokemon);
+    const {name, hp, attack, defence, speed, height, weight, image, types} = req.body;
+    await UpdatePokemon(id, name, hp, attack, defence, speed, height, weight, image, types);
+    res.status(200).send("Pokemon editado con éxito");
   } catch (error) {
     res.status(400).json({error: error.message});
   }

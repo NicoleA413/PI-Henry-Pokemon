@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import main from "./pokemon.png";
 
 import { useEffect } from "react";
@@ -16,7 +16,7 @@ const Landing = () => {
         <>
             <h1>Pokemon PI</h1>
             <img src={main} alt="pokemon" />
-            <button><Link to='/home'>HOME</Link></button>
+            <NavLink to='/pokemons'><button>HOME</button></NavLink>
         </>
     );
 };

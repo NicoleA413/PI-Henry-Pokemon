@@ -15,7 +15,7 @@ function App() {
         <Landing />    
       </Route>
 
-      <Route exact path='/home'>
+      <Route exact path='/pokemons'>
         <Home /> 
       </Route>
 

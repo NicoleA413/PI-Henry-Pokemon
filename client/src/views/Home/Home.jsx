@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemons } from "../../redux/actions";
-import { Link } from 'react-router-dom';
-import SearchBar from "../../components/SearchBar/SearchBar";
+import { getPokemons, getTypes } from "../../redux/actions";
+import { NavLink } from 'react-router-dom';
 import Pages from "../../components/Pages/Pages";
 
 
@@ -13,21 +12,15 @@ const Home = () => {
 
     useEffect(()=>{
         dispatch(getPokemons());
+        dispatch(getTypes());
     },[dispatch]);
-
-    function handleClick() {
-        dispatch(getPokemons());
-      }
 
     return (
         <div>
-            <Link to="/">
-              LANDING
-            </Link>
-            <SearchBar />
-            <button onClick={(e) => {handleClick()}}>refresh</button>
-            {/* <br /> */}
-            {/* <Cards /> */}
+            <NavLink to="/"><button>LANDING</button></NavLink>
+            {/* <SearchBar /> */}
+            {/* <button onClick={(e) => {handleClick()}}>refresh</button> */}
+            {/* {Cards(pokemonsCopia)} */}
             <Pages />
             
         </div>

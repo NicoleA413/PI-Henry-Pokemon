@@ -18,7 +18,6 @@ const Pages = ()=>{
 
   const pages = [];
   for (let i = 1; i <= Math.ceil(allPokemons.length / pokemonsPerPage); i++) {
-    // divido mi cantidad de pokemones por la cantidad de pokemones que quiero por pagina
     pages.push(i);
   }
 
@@ -59,7 +58,7 @@ const Pages = ()=>{
 
   return (
     <>
-      <div>
+      <nav>
         <ul>
           <li>
             <button onClick={handlePrev}>PREV</button>
@@ -71,7 +70,7 @@ const Pages = ()=>{
             <button onClick={handleNext}>NEXT</button>
           </li>
         </ul>
-      </div>
+      </nav>
       
       <div >
         {
@@ -86,7 +85,7 @@ const Pages = ()=>{
         }
       </div>
     
-      <div>
+      <nav>
         <ul>
           <li>
             <button onClick={handlePrev}>PREV</button>
@@ -98,7 +97,7 @@ const Pages = ()=>{
             <button onClick={handleNext}>NEXT</button>
           </li>
         </ul>
-      </div>
+      </nav>
     </>
   );
     

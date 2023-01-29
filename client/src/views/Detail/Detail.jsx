@@ -50,14 +50,6 @@ const Detail = () => {
 
                         <div>ID #{pokemonDetail[0].id}</div>
                     </div>
-
-                    <div>
-                        <div>Height</div>
-                        <div>{pokemonDetail[0].height / 10} m</div>
-
-                        <div>Weight</div>
-                        <div>{pokemonDetail[0].weight / 10} kg</div>
-                    </div>
                     
                     <div>
                         <div>
@@ -95,6 +87,15 @@ const Detail = () => {
                                 <div style={{width: `${(pokemonDetail[0].speed / 150) * 100}%`}}></div>
                             </div>
                         </div>
+
+                    </div>
+
+                    <div>
+                        <div>Height</div>
+                        <div>{pokemonDetail[0].height / 10} m</div>
+
+                        <div>Weight</div>
+                        <div>{pokemonDetail[0].weight / 10} kg</div>
                     </div>
 
                     {pokemonDetail[0].created && (

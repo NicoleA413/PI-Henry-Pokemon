@@ -7,6 +7,7 @@ import {
     POST_POKEMON,
     GET_NAME_POKEMON,
     SET_CURRENT_PAGE,
+    EDIT_POKEMON
  } from './actions';
 
  const initialState = {
@@ -15,7 +16,7 @@ import {
     currentPage: 1,
     types: [],
     detail: [],
-    error: false,
+    error: "",
   };
 
 const rootReducer = (state = initialState, action) => {
@@ -35,7 +36,7 @@ const rootReducer = (state = initialState, action) => {
             } else {
                 return { 
                     ...state,
-                     error: true 
+                     error: action.payload 
                 };
             };
 
@@ -78,6 +79,12 @@ const rootReducer = (state = initialState, action) => {
               ...state,
               currentPage: action.payload,
             };
+
+        case EDIT_POKEMON:
+            return {
+             ...state,
+            };
+            
 
         default:
             return { ...state };

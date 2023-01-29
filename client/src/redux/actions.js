@@ -8,6 +8,7 @@ export const GET_DETAIL_FROM_STATE = "GET_DETAIL_FROM_STATE"
 export const GET_TYPES = "GET_TYPES";
 export const POST_POKEMON = "POST_POKEMON";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+export const EDIT_POKEMON = "EDIT_POKEMON"
 
 export function getPokemons() {
     return async function (dispatch) {
@@ -23,40 +24,40 @@ export function getPokemons() {
       } catch (error) {
         return dispatch({
           type: SET_ERROR,
-          payload: true,
+          payload: "No se encontraron Pokemon",
         });
       }
     };
   }
 
-export function getNamePokemon(namePokemon) {
+export function getNamePokemon(name) {
   return async function (dispatch) {
     try {
-      const apiList = await axios.get(`http://localhost:3001/pokemons?name=${namePokemon}`);
+      const apiList = await axios.get(`http://localhost:3001/pokemons/?name=${name}`);
       const pokemon = apiList.data;
       return dispatch({
         type: GET_NAME_POKEMON,
-        payload: pokemon,
+        payload: [pokemon],
       });
     } catch (error) {
       return dispatch({
         type: SET_ERROR,
-        payload: true,
+        payload: "No se encontraron Pokemon con ese nombre",
       });
     }
   };
 }
 
 export const getDetail = (id) => {
-    return async function(dispatch) {
-        const apiList = await axios.get(`http://localhost:3001/pokemons/${id}`);
-        const pokemon = apiList.data;
+  return async function(dispatch) {
+    const apiList = await axios.get(`http://localhost:3001/pokemons/${id}`);
+    const pokemon = apiList.data;
 
-        dispatch({
-            type: GET_DETAIL,
-            payload: pokemon,
-        });
-    };
+    dispatch({
+      type: GET_DETAIL,
+      payload: pokemon,
+    });
+  };
 };
 
 export function getDetailFromState(payload) {
@@ -79,7 +80,7 @@ export function getTypes() {
   
   export function postPokemon(dataPokemon) {
     return async function () {
-      const api = await axios.post("/pokemons", dataPokemon);
+      const api = await axios.post("http://localhost:3001/pokemons", dataPokemon);
       return api;
     };
   }
@@ -90,3 +91,28 @@ export function getTypes() {
       payload,
     };
   }
+
+  export function editPokemon(id, changes) {
+    return async function (dispatch) {
+      try {
+        const response = await axios.put(`/pokemons/${id}`, changes);
+        const edit = response.data
+        return dispatch({
+          type: EDIT_POKEMON,
+          payload: edit,
+        });
+      } catch (error) {
+        return dispatch({
+          type: SET_ERROR,
+          payload: "No se pudo editar el Pokemon",
+        });
+      }
+    };
+  }
+
+  export const setError = () => {
+    return {
+        type: SET_ERROR,
+        payload: false,
+    }
+};

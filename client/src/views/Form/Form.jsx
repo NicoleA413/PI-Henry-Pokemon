@@ -32,10 +32,7 @@ const Form = () => {
 
 // -----------------------------------------VALIDATES------------------------------------------------------------
 
-    const disabledButton = 
-    !(form.name.length) || 
-    (errors.name || errors.attack || errors.defense || errors.speed || errors.height || errors.weight || errors.hp || errors.image)
-    // form.name.length < 2 || !form.types.length
+    const disabledButton = form.name.length < 2 || !form.types.length
     
     const validate = (property, value) => {
         switch (property) {

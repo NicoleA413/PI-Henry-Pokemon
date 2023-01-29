@@ -3,13 +3,14 @@ import main from "./pokemon.png";
 
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getPokemons } from "../../redux/actions";
+import { getPokemons, getTypes } from "../../redux/actions";
 
 const Landing = () => {
     const dispatch = useDispatch();
 
     useEffect(()=>{
         dispatch(getPokemons());
+        dispatch(getTypes());
     },[dispatch]);
     
     return (

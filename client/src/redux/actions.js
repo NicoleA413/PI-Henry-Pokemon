@@ -8,7 +8,11 @@ export const GET_DETAIL_FROM_STATE = "GET_DETAIL_FROM_STATE"
 export const GET_TYPES = "GET_TYPES";
 export const POST_POKEMON = "POST_POKEMON";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
-export const EDIT_POKEMON = "EDIT_POKEMON"
+export const EDIT_POKEMON = "EDIT_POKEMON";
+export const FILTER_CREATED = "FILTER_CREATED";
+export const FILTER_BY_NAME = "FILTER_BY_NAME";
+export const FILTER_BY_ATTACK = "FILTER_BY_ATTACK";
+export const FILTER_BY_TYPE = "FILTER_BY_TYPE";
 
 export function getPokemons() {
   return async function (dispatch) {
@@ -18,7 +22,7 @@ export function getPokemons() {
 
       dispatch({
         type: GET_POKEMONS,
-        payload: pokemons
+        payload: pokemons,
       });
 
     } catch (error) {
@@ -26,9 +30,9 @@ export function getPokemons() {
         type: SET_ERROR,
         payload: "No se encontraron Pokemon",
       });
-    }
+    };
   };
-}
+};
 
 export function getNamePokemon(name) {
   return async function (dispatch) {
@@ -44,9 +48,9 @@ export function getNamePokemon(name) {
         type: SET_ERROR,
         payload: "No se encontraron Pokemon con ese nombre",
       });
-    }
+    };
   };
-}
+};
 
 export const getDetail = (id) => {
   return async function(dispatch) {
@@ -65,7 +69,7 @@ export function getDetailFromState(payload) {
     type: GET_DETAIL_FROM_STATE,
     payload,
   };
-}
+};
 
 export function getTypes() {
   return async function (dispatch) {
@@ -76,21 +80,21 @@ export function getTypes() {
       payload: types,
     });
   };
-}
+};
   
 export function postPokemon(dataPokemon) {
   return async function () {
     const api = await axios.post("http://localhost:3001/pokemons", dataPokemon);
     return api;
   };
-}
+};
 
 export function setCurrentPage(payload) {
   return {
     type: SET_CURRENT_PAGE,
     payload,
   };
-}
+};
 
 export function editPokemon(id, changes) {
   return async function (dispatch) {
@@ -103,21 +107,62 @@ export function editPokemon(id, changes) {
         type: SET_ERROR,
         payload: "No se pudo editar el Pokemon",
       });
-    }
+    };
   };
-}
+};
 
 export const setPokemon = () => {
   return {
     type: GET_POKEMONS,
-    payload: []
-  }
-}
+    payload: [],
+  };
+};
 
 export const deletePokemon = (id) => {
   return async function () {
     const response = await axios.delete(`http://localhost:3001/pokemons/${id}`);
     return response;
+  };
+};
+
+export const filterCreated = (payload) => {
+  return {
+    type: FILTER_CREATED,
+    payload,
+  };
+};
+
+export const filterByName = (payload) => {
+  return {
+    type: FILTER_BY_NAME,
+    payload,
+  };
+};
+
+export const filterByAttack = (payload) => {
+  return {
+    type: FILTER_BY_ATTACK,
+    payload,
+  };
+};
+
+export const filterByType = (type) => {
+  return async function (dispatch) {
+    try {
+      const apiList = await axios.get(`http://localhost:3001/types/${type}`);
+      const pokemons = apiList.data;
+
+      dispatch({
+        type: FILTER_BY_TYPE,
+        payload: pokemons,
+      });
+    } catch (error) {
+      return dispatch({
+        type: SET_ERROR,
+        payload: `No se encontraron Pokemon con el tipo ${type}`,
+      });
+    }
+    
   };
 };
 

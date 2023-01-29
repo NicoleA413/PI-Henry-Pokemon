@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory, useParams } from "react-router-dom";
-import { editPokemon, getDetail, getNamePokemon, getPokemons, getTypes, setError } from "../../redux/actions";
+import { NavLink, useHistory, useParams } from "react-router-dom";
+import { editPokemon, getDetail, getPokemons, setPokemon, getTypes} from "../../redux/actions";
 
 const Edit = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
     const history = useHistory();
 
-    const allPokemons = useSelector((state) => state.pokemons);
     const pokeDetail = useSelector((state) => state.detail);
     const types = useSelector((state) => state.types);
 
-    const [loading, setLoading] = useState("")
 
     const [form, setForm] = useState({
         name: pokeDetail[0].name ,
@@ -29,8 +27,8 @@ const Edit = () => {
 
     useEffect(() => {
         dispatch(getTypes());
-        dispatch(getPokemons());
-    }, [dispatch, allPokemons.length, id]);
+        dispatch(setPokemon());
+    }, [dispatch]);
 
   const [errors, setErrors] = useState({});
 
@@ -78,14 +76,6 @@ const changeHandler = (event) => {
     const value = event.target.value;
     setForm({ ...form, [property]:value });
     validate(property, value);
-
-    if(event.target.name === 'name' && event.target.value !== pokeDetail.name){
-        setLoading("Loading");
-        dispatch(getPokemons());
-        dispatch(getDetail(id))
-        dispatch(setError(false));
-        setLoading("");
-    }
 }
 
 const handleSelect = (event) => {
@@ -119,17 +109,20 @@ const submitHandler = (event) =>{
             "image": "",
             "types": [],
         });
-        history.push(`/pokemons`)
+        history.push(`/pokemons/${id}`)
         dispatch(getPokemons())
+        dispatch(getDetail(id))
+
+
 }
 
 //--------------------------------------------FORM----------------------------------------------------
     return (
         <div>
 
-            <Link to={`/pokemons/${id}`}>
+            <NavLink to={`/pokemons/${id}`}>
           <button>Return to Pokemon</button>
-            </Link>
+            </NavLink>
 
             <div>
                 <h1>EDIT POKEMON</h1>
@@ -137,7 +130,7 @@ const submitHandler = (event) =>{
             
             <div>
                 <div>
-                    <img src={form.image} alt="imagen-del-pokemon"/>                  
+                    <img src={pokeDetail[0].image} alt="imagen-del-pokemon"/>                  
                 </div>
                 
                 <div>
@@ -149,13 +142,13 @@ const submitHandler = (event) =>{
                 <form onSubmit={submitHandler}>
                     <div>
                         <label for="name">Name:</label>
-                        <input type="text" id="name" placeholder="pikachu" name="name" value={form.name} onChange={changeHandler}/>
+                        <input type="text" id="name" placeholder="pikachu" name="name" value={form.name} onChange={(event) => changeHandler(event)} autoComplete="off"/>
                         {errors.name && <span>{errors.name}</span>}
                     </div>
 
                     <div>
                         <label for="hp">HP:</label>
-                        <input type="number" id="hp" placeholder="50" min="20" max="150" name="hp" value={form.hp} onChange={changeHandler} />
+                        <input type="number" id="hp" placeholder="50" min="20" max="150" name="hp" value={form.hp} onChange={(event) => changeHandler(event)} />
                         {errors.hp && <span>{errors.hp}</span>}
                     </div>
 

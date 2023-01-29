@@ -32,7 +32,10 @@ const Form = () => {
 
 // -----------------------------------------VALIDATES------------------------------------------------------------
 
-    const disabledButton = form.name.length < 2 || !form.types.length
+    const disabledButton = 
+    !(form.name.length) || 
+    (errors.name || errors.attack || errors.defense || errors.speed || errors.height || errors.weight || errors.hp || errors.image)
+    // form.name.length < 2 || !form.types.length
     
     const validate = (property, value) => {
         switch (property) {
@@ -142,37 +145,37 @@ const Form = () => {
 
             <div>
                 <label htmlFor="hp">HP:</label>
-                <input type="number" id="hp" placeholder="50" min="20" max="150" name="hp" value={form.hp} onChange={changeHandler} />
+                <input type="number" id="hp" placeholder="20 - 150" min="20" max="150" name="hp" value={form.hp} onChange={changeHandler} />
                 {errors.hp && <span>{errors.hp}</span>}
             </div>
 
             <div>
                 <label htmlFor="attack">Attack:</label>
-                <input type="number" id="attack" placeholder="50" min="10" max="150" name="attack" value={form.attack} onChange={changeHandler} />
+                <input type="number" id="attack" placeholder="10 - 150" min="10" max="150" name="attack" value={form.attack} onChange={changeHandler} />
                 {errors.attack && <span>{errors.attack}</span>}
             </div>
 
             <div>
                 <label htmlFor="defence">Defence:</label>
-                <input type="number" id="defence" placeholder="50" min="10" max="150" name="defence" value={form.defence} onChange={changeHandler} />
+                <input type="number" id="defence" placeholder="10 - 150" min="10" max="150" name="defence" value={form.defence} onChange={changeHandler} />
                 {errors.defence && <span>{errors.defence}</span>}
             </div>
 
             <div>
                 <label htmlFor="speed">Speed:</label>
-                <input type="number" id="speed" placeholder="40" min="10" max="150" name="speed" value={form.speed} onChange={changeHandler} />
+                <input type="number" id="speed" placeholder="10 - 150" min="10" max="150" name="speed" value={form.speed} onChange={changeHandler} />
                 {errors.speed && <span>{errors.speed}</span>}
             </div>
 
             <div>
                 <label htmlFor="height">Height:</label>
-                <input type="number" id="height" placeholder="10" min="1" max="50" name="height" value={form.height} onChange={changeHandler} />
+                <input type="number" id="height" placeholder="1 - 50" min="1" max="50" name="height" value={form.height} onChange={changeHandler} />
                 {errors.height && <span>{errors.height}</span>}
             </div>
             
             <div>
                 <label htmlFor="weight">Weight:</label>
-                <input type="number" id="weight" placeholder="100" min="10" max="1000" name="weight" value={form.weight} onChange={changeHandler} />
+                <input type="number" id="weight" placeholder="10 - 1000" min="10" max="1000" name="weight" value={form.weight} onChange={changeHandler} />
                 {errors.weight && <span>{errors.weight}</span>}
             </div>
 

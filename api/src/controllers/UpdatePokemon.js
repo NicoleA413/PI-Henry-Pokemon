@@ -1,30 +1,35 @@
 const { Pokemon, Type } = require("../db");
-const {getDb} = require("./utils")
 
-const UpdatePokemon = async (id, name, hp, attack, defence, speed, height, weight, image, types) => {
-    // const pokeList = await getDb();
-    // const pokemon = pokeList.find((poke) => poke.id == id);
-    const pokemon = await Pokemon.findByPk(id)
-    if(!pokemon) throw Error("No existe un Pokemon con el ID provisto");
-    else {
-        pokemon.name = name ? name : pokemon.name;
-        pokemon.hp = hp ? hp : pokemon.hp;
-        pokemon.attack = attack ? attack : pokemon.attack;
-        pokemon.defence = defence ? defence : pokemon.defence;
-        pokemon.speed = speed ? speed : pokemon.speed;
-        pokemon.height = height ? height : pokemon.height;
-        pokemon.weight = weight ? weight : pokemon.weight;
-        pokemon.image = image ? image : pokemon.image;
-        created = true
-            
+const UpdatePokemon = async function (id, body) {
+    const { name, types, hp, attack, defense, speed, height, weight, image } = body;
+
+    body.hp ? body.hp = parseInt(hp) : body.hp = null;
+    body.attack ? body.attack = parseInt(attack) : body.attack = null;
+    body.defense ? body.defense = parseInt(defense) : body.defense = null;
+    body.speed ? body.speed = parseInt(speed) : body.speed = null;
+    body.height ? body.height = parseInt(height) : body.height = null;
+    body.weight ? body.weight = parseInt(weight) : body.weight = null;
+
+    if (!image) {
+        body.image = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png"
+    }
+
+    if (!name) {
+        throw Error('Falta un nombre')
+    } else {
+        body.name = body.name.toLowerCase();
+
+        const findPokemon = await Pokemon.findByPk(id);
+
+        await findPokemon.update(body, { where: { id: id } })
+        
         const typeDb = await Type.findAll({
             where: { name: types },
         });
-      
-        await pokemon.setTypes(typeDb);
 
-        return pokemon
-            
+        await findPokemon.setTypes(typeDb);
+
+        return ('Pokemon editado con éxito');
     };
 };
 

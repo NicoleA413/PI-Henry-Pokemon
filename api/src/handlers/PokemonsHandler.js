@@ -1,7 +1,7 @@
 const { GetPokemons, GetPokemonByName, GetPokemonById } = require ("../controllers/GetPokemons");
 const CreatePokemon = require ("../controllers/CreatePokemon");
 const DeletePokemon = require ("../controllers/DeletePokemon");
-const UpdatePokemon = require ("../controllers/UpdatePokemon");
+const UpdatePokemon = require("../controllers/UpdatePokemon");
 
 const GetPokemonsHandler = async (req, res) => {
   try {
@@ -37,9 +37,9 @@ const CreatePokemonHandler = async (req, res) => {
 const UpdatePokemonHandler = async (req, res) => {
   try {
     const {id} = req.params;
-    const {name, hp, attack, defence, speed, height, weight, image, types} = req.body;
-    await UpdatePokemon(id, name, hp, attack, defence, speed, height, weight, image, types);
-    res.status(200).send("Pokemon editado con éxito");
+    const body = req.body;
+    const editedPokemon = await UpdatePokemon(id, body);
+    res.status(200).send(editedPokemon);
   } catch (error) {
     res.status(400).json({error: error.message});
   }

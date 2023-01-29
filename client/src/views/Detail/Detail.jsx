@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useParams, useHistory } from "react-router-dom";
+import { NavLink, useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetail, getDetailFromState, deletePokemon, getPokemons } from "../../redux/actions";
 
@@ -22,12 +22,12 @@ const Detail = () => {
       }
     }, [dispatch, id, allPokemons.length]);
   
-    // const handlerDelete = () => {
-    //   dispatch(deletePokemon(id));
-    //   alert("Pokemon eliminado con éxito");
-    //   history.push("/home");
-    //   dispatch(getPokemons());
-    // };
+    const handlerDelete = () => {
+      dispatch(deletePokemon(id));
+      alert("Pokemon eliminado con éxito");
+      history.push("/pokemons");
+      dispatch(getPokemons());
+    };
 
     return (
         <div>
@@ -100,9 +100,9 @@ const Detail = () => {
 
                     {pokemonDetail[0].created && (
                         <div>
-                            <Link to={`/pokemons/edit/${id}`}>Edit Pokemon</Link>
+                            <NavLink to={`/pokemons/edit/${id}`}><button>Edit Pokemon</button></NavLink>
 
-                            {/* <button onClick={(e) => handlerDelete(e)}>Delete Pokemon</button> */}
+                            <button onClick={(e) => handlerDelete(e)}>Delete Pokemon</button>
                         </div>
                     )}
                 </div>

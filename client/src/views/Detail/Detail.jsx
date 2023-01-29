@@ -42,11 +42,11 @@ const Detail = () => {
                             {pokemonDetail[0].name[0].toUpperCase() + pokemonDetail[0].name.slice(1)}
                         </div>
 
-                        <ul>
+                        <div>
                             {pokemonDetail[0].types.map((t) => (
                                 <div key={pokemonDetail[0].name + t}>{t.toUpperCase()}</div>
                             ))}
-                        </ul>
+                        </div>
 
                         <div>ID #{pokemonDetail[0].id}</div>
                     </div>
@@ -108,7 +108,7 @@ const Detail = () => {
             ) 
             : (
                 <div>
-                    <img src="" alt="pokeball"/>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/800px-Pokebola-pokeball-png-0.png" alt="pokeball"/>
                 </div>
             )}
         </div>

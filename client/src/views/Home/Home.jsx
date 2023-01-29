@@ -24,7 +24,6 @@ const Home = () => {
             <Link to="/">
               LANDING
             </Link>
-            <h1>Estoy en el Home</h1>
             <SearchBar />
             <button onClick={(e) => {handleClick()}}>refresh</button>
             {/* <br /> */}

@@ -29,9 +29,9 @@ const Form = () => {
 
     let [errors, setErrors] = useState({})
 
-    const disabledButton = form.name.length < 2 || !form.types.length
-
 // -----------------------------------------VALIDATES------------------------------------------------------------
+
+    const disabledButton = form.name.length < 2 || !form.types.length
     
     const validate = (property, value) => {
         switch (property) {
@@ -127,44 +127,44 @@ const Form = () => {
     return (
         <form onSubmit={submitHandler}>
             <div>
-                <label>Name:</label>
-                <input type="text" placeholder="name" name="name" value={form.name} onChange={changeHandler}/>
+                <label for="name">Name:</label>
+                <input type="text" id="name" placeholder="pikachu" name="name" value={form.name} onChange={changeHandler}/>
                 {errors.name && <span>{errors.name}</span>}
             </div>
 
             <div>
-                <label>HP:</label>
-                <input type="number" placeholder="50" min="20" max="150" name="hp" value={form.hp} onChange={changeHandler} />
+                <label for="hp">HP:</label>
+                <input type="number" id="hp" placeholder="50" min="20" max="150" name="hp" value={form.hp} onChange={changeHandler} />
                 {errors.hp && <span>{errors.hp}</span>}
             </div>
 
             <div>
-                <label>Attack:</label>
-                <input type="number" placeholder="50" min="10" max="150" name="attack" value={form.attack} onChange={changeHandler} />
+                <label for="attack">Attack:</label>
+                <input type="number" id="attack" placeholder="50" min="10" max="150" name="attack" value={form.attack} onChange={changeHandler} />
                 {errors.attack && <span>{errors.attack}</span>}
             </div>
 
             <div>
-                <label>Defence:</label>
-                <input type="number" placeholder="50" min="10" max="150" name="defence" value={form.defence} onChange={changeHandler} />
+                <label for="defence">Defence:</label>
+                <input type="number" id="defence" placeholder="50" min="10" max="150" name="defence" value={form.defence} onChange={changeHandler} />
                 {errors.defence && <span>{errors.defence}</span>}
             </div>
 
             <div>
-                <label>Speed:</label>
-                <input type="number" placeholder="40" min="10" max="150" name="speed" value={form.speed} onChange={changeHandler} />
+                <label for="speed">Speed:</label>
+                <input type="number" id="speed" placeholder="40" min="10" max="150" name="speed" value={form.speed} onChange={changeHandler} />
                 {errors.speed && <span>{errors.speed}</span>}
             </div>
 
             <div>
-                <label>Height:</label>
-                <input type="number" placeholder="10" min="1" max="50" name="height" value={form.height} onChange={changeHandler} />
+                <label for="height">Height:</label>
+                <input type="number" id="height" placeholder="10" min="1" max="50" name="height" value={form.height} onChange={changeHandler} />
                 {errors.height && <span>{errors.height}</span>}
             </div>
             
             <div>
-                <label>Weight:</label>
-                <input type="number" placeholder="100" min="10" max="1000" name="weight" value={form.weight} onChange={changeHandler} />
+                <label for="weight">Weight:</label>
+                <input type="number" id="weight" placeholder="100" min="10" max="1000" name="weight" value={form.weight} onChange={changeHandler} />
                 {errors.weight && <span>{errors.weight}</span>}
             </div>
 
@@ -197,8 +197,8 @@ const Form = () => {
             </div>
 
             <div>
-                <label>Image(Optional):</label>
-                <input type="text" placeholder="http://url.com/image.png" name="image" value={form.image} onChange={changeHandler} />
+                <label for="image">Image(Optional):</label>
+                <input type="url" id="image" placeholder="http://url.com/image.png" name="image" value={form.image} onChange={changeHandler} />
                 {errors.image && <span>{errors.image}</span>}
             </div>
 

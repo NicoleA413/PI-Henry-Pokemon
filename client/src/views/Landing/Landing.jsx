@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import main from "./pokemon.png";
+import style from "./Landing.module.css"
 
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -14,11 +14,13 @@ const Landing = () => {
     },[dispatch]);
     
     return (
-        <>
-            <h1>Pokemon PI</h1>
-            <img src={main} alt="pokemon" />
-            <NavLink to='/pokemons'><button>HOME</button></NavLink>
-        </>
+        <div className={style.background}>
+            <div className={style.container}>
+                <h1 className={style.title}>Pokemon PI</h1>
+                <NavLink to='/pokemons'><button className={style.button}>HOME</button></NavLink> 
+            </div>
+            
+        </div>
     );
 };
 

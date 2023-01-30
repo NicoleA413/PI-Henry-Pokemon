@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPokemons, getTypes, filterCreated, filterByType, filterByName, filterByAttack, setCurrentPage } from "../../redux/actions";
 import { NavLink } from 'react-router-dom';
 import Pages from "../../components/Pages/Pages";
+import style from "./Home.module.css"
 
 const Home = () => {
 
@@ -104,60 +105,83 @@ const Home = () => {
 
 //----------------------------------------------------VIEW----------------------------------------------
 
-    return (
-        <div>
-            <NavLink to="/"><button>LANDING</button></NavLink>
+    try {
+        return (
+            <div className={style.mainContainer}>
+                {/* <NavLink to="/"><button className={style.buttonLan}>LANDING</button></NavLink> */}
+                
+                <div className={style.titleBack}><h2 className={style.title}>My Pokedex</h2></div>
 
-            <h1>My Pokedex</h1>
+                <div className={style.container}>       
+                    <p className={style.FilterP}>Filter by</p>
+                    <div className={style.selectContainer}>
+                        <div className={style.orderContainer}>
+                            <p>Order by</p>
+                            <select onChange={handleFilterOrder} defaultValue="def">
+                                <option value="def">Pokedex</option>
+                                <option value="asc">A-Z</option>
+                                <option value="des">Z-A</option>
+                                <option value="strongest">Strongest</option>
+                                <option value="weakest">Weakest</option>
+                            </select>                        
+                        </div>
 
-            <div>
-                <select onChange={handleFilterOrder} defaultValue="title">
-                    <option value="title" disabled>Order</option>
-                    <option value="def">Pokedex</option>
-                    <option value="asc">A-Z</option>
-                    <option value="des">Z-A</option>
-                    <option value="strongest">Strongest</option>
-                    <option value="weakest">Weakest</option>
-                </select>
+                        <div className={style.filterContainer}> 
+                            <div>  
+                                <p>Origin</p>
 
-                <select disabled={disabledSelectCreated} onChange={handleFilterCreated} defaultValue="all">
-                    <option value="all">All</option>
-                    <option value="created">Created</option>
-                    <option value="official">Official</option>
-                </select>
+                                <select disabled={disabledSelectCreated} onChange={handleFilterCreated} defaultValue="all">
+                                    <option value="all">All Pokemon</option>
+                                    <option value="created">Created</option>
+                                    <option value="official">Official</option>
+                                </select>
 
-                {typeSelect.origin?.map((origin, index) => {
-                    return (
-                        <div>
-                            <div key={index}>
-                                <button name={origin} key={origin} onClick={handleDeleteType}>{origin[0].toUpperCase() + origin.slice(1)}</button>
+                                {typeSelect.origin?.map((origin, index) => {
+                                    return (
+                                        <div>
+                                            <div key={index}>
+                                                <button name={origin} key={origin} onClick={handleDeleteType}>{origin[0].toUpperCase() + origin.slice(1)}</button>
+                                            </div>
+                                        </div>
+                                    )
+                                })}                            
+                            </div>
+
+                            <p>OR</p>
+
+                            <div className={style.filterTypes}>
+                                <p>Type</p>
+
+                                <select disabled={disabledSelect} onChange={handleFilterType} defaultValue="all">
+                                    <option value="all">All Types</option>
+                                    {types.map(type => {
+                                        return <option name={type.name} value={type.name} key={type.name}>{type.name.toUpperCase()}</option>
+                                    })}
+                                </select>
+
+                                {typeSelect.type?.map((type, index) => {
+                                    return (
+                                        <div>
+                                            <div key={index}>
+                                                <button name={type} key={type} onClick={handleDeleteType}>{type.toUpperCase()}</button>
+                                            </div>
+                                        </div>
+                                    )
+                                })}                               
                             </div>
                         </div>
-                    )
-                })}
-
-                <select disabled={disabledSelect} onChange={handleFilterType} defaultValue="all">
-                    <option value="all">All Types</option>
-                    {types.map(type => {
-                        return <option value={type.name} key={type.id}>{type.name.toUpperCase()}</option>
-                    })}
-                </select>
-
-                {typeSelect.type?.map((type, index) => {
-                    return (
-                        <div>
-                            <div key={index}>
-                                <button name={type} key={type} onClick={handleDeleteType}>{type.toUpperCase()}</button>
-                            </div>
-                        </div>
-                    )
-                })}
-
-            </div>
+                    </div>   
+                </div>
 
             <Pages />        
         </div>
-    );
+    ); 
+
+} catch (error) {
+    return("Oops, algo ha salido mal");
+};
+
+
 };
 
 export default Home;

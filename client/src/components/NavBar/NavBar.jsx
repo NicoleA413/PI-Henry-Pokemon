@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import { getNamePokemon, getPokemons } from '../../redux/actions';
+import style from './NavBar.module.css'
 
 const NavBar = () => {
     const dispatch = useDispatch()
@@ -30,14 +31,15 @@ const NavBar = () => {
 
 
     return (
-        <nav>
-            <NavLink to='/pokemons'><button>HOME</button></NavLink>
-            <div>
-                <input type="text" id="input" autoComplete="off" value={input} onChange={(event) => changeHandler(event)} placeholder="Find your pokemon..." />
-                <button onClick={(event) => submitHandler(event)}>SEARCH</button> {/*Puede ser una pokeball */}
+        <nav className={style.nav}>
+            <NavLink to='/pokemons'><button className={style.buttonNav}>HOME</button></NavLink>
+            <div className={style.container}>
+                <input type="text" className={style.input} id="input" autoComplete="off" value={input} onChange={(event) => changeHandler(event)} placeholder="Find your pokemon..." />
+                <button className={style.buttonSearch} onClick={submitHandler}>SEARCH</button>
+                <button className={style.buttonReload} onClick={reloadHandler}>Reload</button>
             </div>
-            <button onClick={(event) => reloadHandler(event)}>Reload</button>
-            <NavLink to='/create'><button>CREATE POKEMON</button></NavLink>
+            
+            <NavLink to='/create'><button className={style.buttonNav}>CREATE POKEMON</button></NavLink>
 
         </nav>
     );

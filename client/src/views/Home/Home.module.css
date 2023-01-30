@@ -1,0 +1,59 @@
+.mainContainer{
+color: rgb(0, 0, 0);
+background-color: rgb(0, 0, 0);
+}
+
+.titleBack{
+    display: inline-block;
+    background-color: rgba(240, 248, 255, 0.74);
+    height: 150px;
+    width: 400px;
+    position: absolute;
+    top:80px;
+    left:470px;
+    transform: rotate(10deg);
+    border-radius: 50px;
+}
+
+.title{
+    font-family: 'Pokemon Solid';
+    font-size: 60px;
+    display: flex;
+    position: relative;
+    height: 40px;
+    transform: rotate(-10deg);
+    top: -85px;
+    left: 15px;
+    color: rgb(182, 13, 13);
+} 
+
+.container{
+    font-size: 25px;
+    color: rgb(109, 14, 14);
+    background-color: rgb(243, 215, 124);    
+}
+
+.FilterP{
+    position: absolute;
+    top: 50px;
+    right: 300px;
+}
+
+.selectContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.filterContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 200px;
+
+}
+
+option{
+    font-family: 'Banana';
+}

@@ -9,7 +9,7 @@ const Home = () => {
 
     const dispatch = useDispatch();
     const error = useSelector(state => state.error);
-    const AllPokemons = useSelector(state => state.pokemons);
+    const allPokemons = useSelector(state => state.pokemons);
     const types = useSelector(state => state.types);
 
     const [typeSelect, setTypeSelect] = useState({
@@ -20,16 +20,15 @@ const Home = () => {
     const [order, setOrder] = useState("");
 
     useEffect(()=>{
-        if(!AllPokemons.length){
+        if(!allPokemons.length){
             dispatch(getPokemons());
             dispatch(getTypes()); 
         }
-    },[dispatch, AllPokemons.length]);
+    },[dispatch, allPokemons.length]);
 
 //--------------------------------------------------HANDLERS--------------------------------------------
 
-    let disabledSelect = !(!typeSelect.type.length);
-    let disabledSelectCreated = !(!typeSelect.origin.length);
+    let disabledSelect = !(!typeSelect.type.length) || !(!typeSelect.origin.length);
 
     const handleFilterCreated = (event) => {
         event.preventDefault();
@@ -105,7 +104,15 @@ const Home = () => {
 
 //----------------------------------------------------VIEW----------------------------------------------
 
-    try {
+    try{
+        if(error){
+            return(
+                <>
+                <h2>Oops, algo ha salido mal...</h2>
+                <button onClick={handleDeleteType}>Return to Home</button>
+                </>
+            )
+        }
         return (
             <div className={style.mainContainer}>
                 {/* <NavLink to="/"><button className={style.buttonLan}>LANDING</button></NavLink> */}
@@ -130,7 +137,7 @@ const Home = () => {
                             <div>  
                                 <p>Origin</p>
 
-                                <select disabled={disabledSelectCreated} onChange={handleFilterCreated} defaultValue="all">
+                                <select disabled={disabledSelect} onChange={handleFilterCreated} defaultValue="all">
                                     <option value="all">All Pokemon</option>
                                     <option value="created">Created</option>
                                     <option value="official">Official</option>
@@ -173,15 +180,17 @@ const Home = () => {
                     </div>   
                 </div>
 
-            <Pages />        
-        </div>
-    ); 
-
-} catch (error) {
-    return("Oops, algo ha salido mal");
-};
-
-
+                <Pages />        
+            </div>
+        ); 
+    }catch(error){
+        return(
+            <>
+            <h2>Oops, algo ha salido mal...</h2>
+            <button onClick={handleDeleteType}>Return to Home</button>
+            </>
+        );
+    };
 };
 
 export default Home;

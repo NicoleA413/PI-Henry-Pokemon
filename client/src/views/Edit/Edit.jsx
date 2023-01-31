@@ -49,14 +49,14 @@ const Edit = () => {
 
     const validate = (property, value) => {
         switch (property) {
-            // case "name":
-            //     if(value.length >= 2 && value.length <= 20){
-            //         setErrors({...errors, name: ""})
-            //     }    
-            //     else{  	
-            //         setErrors({...errors, name: "El nombre debe contener entre 2 y 20 caracteres"});	
-            //        }  
-            //     break;
+            case "name":
+                if(value.length >= 2 && value.length <= 20){
+                    setErrors({...errors, name: ""})
+                }    
+                else{  	
+                    setErrors({...errors, name: "El nombre debe contener entre 2 y 20 caracteres"});	
+                   }  
+                break;
             // case "image":
             //     /^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)\??.*$/.test(form.image)
             //     ? setErrors({...errors, image: ""})
@@ -69,6 +69,8 @@ const Edit = () => {
         }
         if(value === ""){
             setErrors({...errors, [property]: "campo necesario"})
+        }else{
+            setErrors({...errors, [property]: ""})
         }
     }
 
@@ -100,6 +102,7 @@ const handleDeleteType = (event) => {
 const submitHandler = (event) =>{
     event.preventDefault();
     dispatch(editPokemon(id, form));
+        console.log(typeof form.image);
         alert("Pokemon editado con éxito");
         setForm({
             "name": "",
@@ -133,15 +136,16 @@ const submitHandler = (event) =>{
                     <div className={style.imageContainer}>
                         <img className={style.image} src={pokeDetail[0].image} alt="imagen-del-pokemon"/>                  
                     </div>
-                
+
                     <div className={style.section}>
                         <label for="image" className={style.label}>Update image:</label>
                         <input type="url" className={style.input} id="image" placeholder="http://url.com/image.png" name="image" value={form.image} onChange={changeHandler} />
-                    </div>
+                    </div>                
                 </div>
 
 
                 <form className={style.form} onSubmit={submitHandler}>
+
                     <div className={style.section}>
                         <label for="name" className={style.label}>Name:</label>
                         <input type="text" className={style.input} id="name" placeholder="pikachu" name="name" value={form.name} onChange={(event) => changeHandler(event)} autoComplete="off"/>
@@ -177,7 +181,7 @@ const submitHandler = (event) =>{
                         <input type="number" className={style.input} id="weight" placeholder="100" min="10" max="1000" name="weight" value={form.weight} onChange={changeHandler} />
                     </div>
 
-                    <div className={style.section}>
+                    <div className={style.section} id="typesSection">
                         <select className={style.select} onChange={handleSelect} disabled={form.types.length >= 2} defaultValue="title">
                             <option value="title" disabled name="types">Types</option>
 
@@ -205,6 +209,9 @@ const submitHandler = (event) =>{
 
                 </form>
 
+                <img src={Psyduck} className={style.Psyduck} alt="Psyduck" />
+                <img src={Eevee} className={style.Eevee} alt="Eevee" /> 
+                
                 <div >
                     <ul className={style.spans}>
                         <li className={style.span}>{errors.name && <span>{errors.name}</span>}</li>
@@ -215,12 +222,9 @@ const submitHandler = (event) =>{
                         <li className={style.span}>{errors.height && <span>{errors.height}</span>}</li>
                         <li className={style.span}>{errors.weight && <span>{errors.weight}</span>}</li>
                         <li className={style.span} id="typeSpan">{errors.types && <span>{errors.types}</span>}</li>
-                        <li className={style.span} id="imageSpan">{errors.image && <span>{errors.image}</span>}</li>
+                        {/* <li className={style.span} id="imageSpan">{errors.image && <span>{errors.image}</span>}</li> */}
                     </ul>
                 </div>
-            
-                <img src={Psyduck} className={style.Psyduck} alt="Psyduck" />
-                <img src={Eevee} className={style.Eevee} alt="Eevee" /> 
             </div>
         </div>
     );

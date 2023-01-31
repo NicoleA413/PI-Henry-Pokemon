@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPokemons, getTypes, filterCreated, filterByType, filterByName, filterByAttack, setCurrentPage } from "../../redux/actions";
 // import { NavLink } from 'react-router-dom';
 import Pages from "../../components/Pages/Pages";
-import style from "./Home.module.css"
+import style from "./Home.module.css";
 
 const Home = () => {
 

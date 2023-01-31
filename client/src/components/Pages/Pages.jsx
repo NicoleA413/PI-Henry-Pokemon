@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Cards from "../Cards/Cards";
 import { setCurrentPage } from "../../redux/actions";
-import style from "./Pages.module.css"
+import style from "./Pages.module.css";
 
 const Pages = ()=>{
   const dispatch = useDispatch();

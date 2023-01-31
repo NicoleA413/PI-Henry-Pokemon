@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch} from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import { getNamePokemon, getPokemons } from '../../redux/actions';
-import style from './NavBar.module.css'
+import style from './NavBar.module.css';
 
 const NavBar = () => {
     const dispatch = useDispatch()

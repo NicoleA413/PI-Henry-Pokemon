@@ -139,10 +139,12 @@
     bottom: 30px;
     right: 70px;
     transform: scaleX(-1);
+    width: 200px;
 }
 
 .Bulbasaur{
     position: absolute;
     bottom: 30px;
     left: 70px;
+    width: 200px;
 }

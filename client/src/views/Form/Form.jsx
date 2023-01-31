@@ -3,9 +3,9 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getPokemons, getTypes } from "../../redux/actions";
-import style from "./Form.module.css"
-import Eevee from "../../styles/images/Eevee flores.png"
-import Bulbasaur from "../../styles/images/Bulbasaur.png"
+import style from "./Form.module.css";
+import Eevee from "../../styles/images/Eevee flores.png";
+import Bulbasaur from "../../styles/images/Bulbasaur.png";
 
 const Form = () => {
     const dispatch = useDispatch()

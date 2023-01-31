@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import style from "./Landing.module.css"
+import style from "./Landing.module.css";
 
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";

@@ -1,0 +1,174 @@
+.spans{
+    list-style: none;
+    font-size: 15px;
+    position: absolute;
+    top:99px;
+    left:110px;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: end;
+    color: rgb(170, 22, 22);
+    font-weight: bold;
+}
+
+.span{
+    margin:7px;
+}
+
+[id="typeSpan"]{
+    position: absolute;
+    top:250px;
+}
+
+.mainContainer{
+    background-color: rgb(245, 245, 230);
+    width: 90%;
+    height: 80%;
+    position: absolute;
+    left:5%;
+    margin-top: 30px;
+    border-radius: 30px;
+    border: 5px;
+    border-style: double;
+    border-color: rgb(85, 38, 11);
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.title{
+    font-family: 'Jack in the Box';
+    letter-spacing: 2px;
+    font-size: 25px;
+    color: rgb(202, 148, 32);
+    position: relative;
+    top: 0px;
+}
+
+.buttonReturn{
+    position:absolute;
+    top:5px;
+    left:532px;
+    background-color: rgb(13, 13, 102);
+    border-radius: 5px;
+    color: rgba(206, 206, 206, 0.863);
+    font-family: 'Vanilla Caramel';
+    letter-spacing: 1px;
+    font-size: 15px;
+}
+
+.imageModule{
+    background-color: rgba(255, 0, 0, 0.411);
+    position: absolute;
+    top:150px;
+    right:300px;
+    padding: 10px;
+    border: 2px dashed black;
+}
+
+.image{
+    height: 200px;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.form{
+    background-color: rgba(255, 0, 0, 0.411);
+    width: 250px;
+    height: 350px;
+    border: 2px dashed black;
+    padding-inline: 20px;
+    position:relative;
+    top:-25px;
+    left:-180px;
+    display: flex;
+    flex-direction: column;
+}
+
+.section{
+    display: flex;
+    justify-content: space-between;
+    margin: 3px 0px;
+    font-size: 22px;
+}
+
+.label{
+    font-family: 'Vanilla Caramel';
+}
+
+.label:hover{
+    cursor: pointer;
+}
+
+.select{
+    margin: 12px 0px;
+    height: 27px;
+    background-color: rgb(102, 114, 223);
+    font-family: 'Banana';
+    font-size: 17px;
+    border-radius: 10px;
+    padding: 3px;
+}
+
+.input{
+    height: 20px;
+}
+
+.buttonList{
+    list-style: none;
+    height: 10px;
+    position: relative;
+    top: -30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.popUpButtons{
+    border-radius: 10px;
+    font-family: 'Banana';
+    font-size: 17px;
+    outline-color: inherit;
+}
+
+.popUpButtons:hover{
+    cursor: pointer;
+    background-color: rgb(88, 88, 88);
+    border-color: rgb(88, 88, 88);
+}
+
+.button{
+    margin-top: 30px;
+    position: relative;
+    top:40px;
+    left: 240px;
+    width: 100px;
+    font-family: 'Purple Smile';
+    font-size: 20px;
+    background-color: goldenrod;
+    border-color: goldenrod;
+    border-radius: 10px;
+}
+
+.button:hover{
+    cursor: pointer;
+    transform: scale(159%);
+    background-color: rgb(61, 187, 22);
+    border-color: rgb(61, 187, 22);;
+}
+
+.Psyduck{
+    height: 250px;
+    position: absolute;
+    top:260px;
+    right: 50px;
+}
+
+.Eevee{
+    transform: scaleX(-1);
+    width: 200px;
+    position: absolute;
+    top:280px;
+    left:30px;
+}

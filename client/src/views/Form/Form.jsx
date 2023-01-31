@@ -14,7 +14,7 @@ const Form = () => {
     
     useEffect(() => {
         dispatch(getTypes());
-      }, [dispatch]);
+    }, [dispatch]);
    
     const history = useHistory();
 

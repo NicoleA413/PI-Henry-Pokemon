@@ -97,11 +97,11 @@
 
 .stats{
     background-color: rgba(168, 16, 16, 0.733);
-    width: 340px;
+    width: 380px;
     height: 500px;
     position: relative;
-    top:-480px;
-    right: -495px;
+    top:-475px;
+    right: -470px;
     border-radius: 20px;
     font-family: 'Purple Smile';
     letter-spacing: 2px;
@@ -109,7 +109,7 @@
 .statsRow{
     position: relative;
     top:8px;
-    left:-140px;
+    left:-170px;
     text-align:center;
 }
 .graph{
@@ -119,14 +119,14 @@
     transition: width 0.5s;
     position: relative;
     top:-24px;
-    right:-196px;
+    right:-205px;
     border-radius: 30px;
 }
 
 .statsTitle{
     position: relative;
     top:-5px;
-    left: 140px;
+    left: 170px;
 }
 
 .statsNumbers{
@@ -142,7 +142,7 @@
     border-radius: 12px;
     position: absolute;
     bottom:60px;
-    right:22px;
+    right:29px;
     font-family: 'Purple Smile';
     letter-spacing: 2px;
     font-size: 20px;

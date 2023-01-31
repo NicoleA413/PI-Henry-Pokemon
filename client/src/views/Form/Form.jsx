@@ -3,6 +3,9 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getPokemons, getTypes } from "../../redux/actions";
+import style from "./Form.module.css"
+import Eevee from "../../styles/images/Eevee flores.png"
+import Bulbasaur from "../../styles/images/Bulbasaur.png"
 
 const Form = () => {
     const dispatch = useDispatch()
@@ -133,84 +136,93 @@ const Form = () => {
 //----------------------------------------FORM----------------------------------------------------------
 
     return (
-        <form onSubmit={submitHandler}>
-            <div>
-                <label htmlFor="name">Name:</label>
-                <input type="text" id="name" placeholder="pikachu" name="name" value={form.name} onChange={changeHandler}/>
-                {errors.name && <span>{errors.name}</span>}
-            </div>
+        <div className={style.mainContainer}>
+            <div className={style.title}><h2>Create Pokemon</h2></div>
 
-            <div>
-                <label htmlFor="hp">HP:</label>
-                <input type="number" id="hp" placeholder="20 - 150" min="20" max="150" name="hp" value={form.hp} onChange={changeHandler} />
-                {errors.hp && <span>{errors.hp}</span>}
-            </div>
+            <form className={style.form} onSubmit={submitHandler}>
+                <div className={style.section}>
+                    <label className={style.label} htmlFor="name">Name:</label>
+                    <input className={style.input} type="text" id="name" placeholder="pikachu" name="name" value={form.name} onChange={changeHandler}/>    
+                </div>
 
-            <div>
-                <label htmlFor="attack">Attack:</label>
-                <input type="number" id="attack" placeholder="10 - 150" min="10" max="150" name="attack" value={form.attack} onChange={changeHandler} />
-                {errors.attack && <span>{errors.attack}</span>}
-            </div>
+                <div className={style.section}>
+                    <label className={style.label} htmlFor="hp">HP:</label>
+                    <input className={style.input} type="number" id="hp" placeholder="20 - 150" min="20" max="150" name="hp" value={form.hp} onChange={changeHandler} />   
+                </div>
 
-            <div>
-                <label htmlFor="defence">Defence:</label>
-                <input type="number" id="defence" placeholder="10 - 150" min="10" max="150" name="defence" value={form.defence} onChange={changeHandler} />
-                {errors.defence && <span>{errors.defence}</span>}
-            </div>
+                <div className={style.section}>
+                    <label className={style.label} htmlFor="attack">Attack:</label>
+                    <input className={style.input} type="number" id="attack" placeholder="10 - 150" min="10" max="150" name="attack" value={form.attack} onChange={changeHandler} />    
+                </div>
 
-            <div>
-                <label htmlFor="speed">Speed:</label>
-                <input type="number" id="speed" placeholder="10 - 150" min="10" max="150" name="speed" value={form.speed} onChange={changeHandler} />
-                {errors.speed && <span>{errors.speed}</span>}
-            </div>
+                <div className={style.section}>
+                    <label className={style.label} htmlFor="defence">Defence:</label>
+                    <input className={style.input} type="number" id="defence" placeholder="10 - 150" min="10" max="150" name="defence" value={form.defence} onChange={changeHandler} />    
+                </div>
 
-            <div>
-                <label htmlFor="height">Height:</label>
-                <input type="number" id="height" placeholder="1 - 50" min="1" max="50" name="height" value={form.height} onChange={changeHandler} />
-                {errors.height && <span>{errors.height}</span>}
-            </div>
+                <div className={style.section}>
+                    <label className={style.label} htmlFor="speed">Speed:</label>
+                    <input className={style.input} type="number" id="speed" placeholder="10 - 150" min="10" max="150" name="speed" value={form.speed} onChange={changeHandler} />    
+                </div>
+
+                <div className={style.section}>
+                    <label className={style.label} htmlFor="height">Height:</label>
+                    <input className={style.input} type="number" id="height" placeholder="1 - 50" min="1" max="50" name="height" value={form.height} onChange={changeHandler} />   
+                </div>
             
-            <div>
-                <label htmlFor="weight">Weight:</label>
-                <input type="number" id="weight" placeholder="10 - 1000" min="10" max="1000" name="weight" value={form.weight} onChange={changeHandler} />
-                {errors.weight && <span>{errors.weight}</span>}
-            </div>
+                <div className={style.section}>
+                    <label className={style.label} htmlFor="weight">Weight:</label>
+                    <input className={style.input} type="number" id="weight" placeholder="10 - 1000" min="10" max="1000" name="weight" value={form.weight} onChange={changeHandler} />                   
+                </div>
 
-            <div>
-                <select onChange={(e) => handleSelect(e)} disabled={form.types.length >= 2} defaultValue="title">
-                    <option value="title" disabled name="types">Types</option>
+                <div className={style.section}>
+                    <select className={style.select} onChange={(e) => handleSelect(e)} disabled={form.types.length >= 2} defaultValue="title">
+                        <option value="title" disabled name="types">Types</option>
 
-                    {types.map((t) => {
-                        return (
-                            <option value={t.name} key={t.name}>{t.name.toUpperCase()}</option>
-                        );
-                    })}
+                        {types.map((t) => {
+                            return (
+                                <option value={t.name} name={t.name} key={t.name}>{t.name.toUpperCase()}</option>
+                            );
+                        })}
                 
-                </select>
+                    </select>
 
-                <ul>
-                    {form.types.map((t) => {
-                        return (
-                            <li key={t}>
-                                {t.toUpperCase()}
-                                <button onClick={() => handleDeleteType(t)}>x</button>
-                            </li>
-                        );
-                    })}
+                    <ul className={style.buttonList}>
+                        {form.types.map((t) => {
+                            return (
+                                <li key={t}>
+                                    <button className={style.popUpButtons} name={t} onClick={() => handleDeleteType(t)}>{t.toUpperCase()}</button>  
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
+
+                <div className={style.section}>
+                    <label className={style.label} htmlFor="image">Image(Optional):</label>
+                    <input className={style.input} type="url" id="image" placeholder="http://url.com/image.png" name="image" value={form.image} onChange={changeHandler} />
+                </div>
+
+                <input className={style.button} type="submit" disabled={disabledButton} value="CREATE"/>
+            </form>
+
+            <img className={style.Eevee} src={Eevee} alt="Eevee flores"/>
+            <img className={style.Bulbasaur} src={Bulbasaur} alt="Bulbasaur"/>
+
+            <div >
+                <ul className={style.spans}>
+                <li className={style.span}>{errors.name && <span>{errors.name}</span>}</li>
+                <li className={style.span}>{errors.hp && <span>{errors.hp}</span>}</li>
+                <li className={style.span}>{errors.attack && <span>{errors.attack}</span>}</li>
+                <li className={style.span}>{errors.defence && <span>{errors.defence}</span>}</li>
+                <li className={style.span}>{errors.speed && <span>{errors.speed}</span>}</li>
+                <li className={style.span}>{errors.height && <span>{errors.height}</span>}</li>
+                <li className={style.span}>{errors.weight && <span>{errors.weight}</span>}</li>
+                <li className={style.span} id="typesSpan">{errors.types && <span>{errors.types}</span>}</li>
+                <li className={style.span} id="imageSpan">{errors.image && <span>{errors.image}</span>}</li>
                 </ul>
-
-                {errors.types && <span>{errors.types}</span>}
             </div>
-
-            <div>
-                <label htmlFor="image">Image(Optional):</label>
-                <input type="url" id="image" placeholder="http://url.com/image.png" name="image" value={form.image} onChange={changeHandler} />
-                {errors.image && <span>{errors.image}</span>}
-            </div>
-
-                <input type="submit" disabled={disabledButton} value="CREATE"/>
-
-        </form>
+        </div>    
     );
 };
 

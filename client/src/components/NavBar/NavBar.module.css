@@ -18,6 +18,10 @@
     border-color: rgb(216, 191, 48);
     background-color: rgb(216, 191, 48);
 }
+.buttonNav:hover{
+    cursor: pointer;
+    transform:rotate(3deg);
+}
 
 .container{
     display: flex;
@@ -30,14 +34,20 @@
     font-size: 15px;
     font-family: 'Banana';
     padding: 5px;
-    color: rgba(255, 255, 255, 0.63);
+    color: rgba(255, 255, 255, 0.63); 
     background-color: rgb(23, 26, 207, 0.842);
     border-color: rgba(23, 26, 207, 0.842);
     border-radius: 25px;
-
+   
     /* color: rgba(0, 0, 0, 0.329);
     border-color: rgb(224, 224, 224);
     background-color: rgb(224, 224, 224); */
+}
+.buttonReload:hover{
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.377);
+    background-color: rgba(49, 51, 172);
+    border-color: rgba(49, 51, 172);
 }
 
 .buttonSearch{
@@ -49,6 +59,10 @@
     border-color: rgb(23, 26, 207);
     background-color: rgb(23, 26, 207);
     border-radius: 20px;
+}
+.buttonSearch:hover{
+    cursor: pointer;
+    transform: scale(104%);
 }
 
 .input{

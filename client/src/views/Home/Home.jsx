@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemons, getTypes, filterCreated, filterByType, filterByName, filterByAttack, setCurrentPage } from "../../redux/actions";
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import Pages from "../../components/Pages/Pages";
 import style from "./Home.module.css"
 
@@ -107,10 +107,10 @@ const Home = () => {
     try{
         if(error){
             return(
-                <>
+                <div className={style.error}>
                 <h2>Oops, algo ha salido mal...</h2>
-                <button onClick={handleDeleteType}>Return to Home</button>
-                </>
+                <button className={style.errorButton} onClick={handleDeleteType}>Return to Home</button>
+                </div>
             )
         }
         return (
@@ -123,8 +123,8 @@ const Home = () => {
                     <p className={style.FilterP}>Filter by</p>
                     <div className={style.selectContainer}>
                         <div className={style.orderContainer}>
-                            <p>Order by</p>
-                            <select onChange={handleFilterOrder} defaultValue="def">
+                            <p className={style.filterTitle}>Order by</p>
+                            <select className={style.select} onChange={handleFilterOrder} defaultValue="def">
                                 <option value="def">Pokedex</option>
                                 <option value="asc">A-Z</option>
                                 <option value="des">Z-A</option>
@@ -134,10 +134,10 @@ const Home = () => {
                         </div>
 
                         <div className={style.filterContainer}> 
-                            <div>  
-                                <p>Origin</p>
+                            <div className={style.originFilter}>  
+                                <p className={style.filterTitle}>Origin</p>
 
-                                <select disabled={disabledSelect} onChange={handleFilterCreated} defaultValue="all">
+                                <select className={style.select} disabled={disabledSelect} onChange={handleFilterCreated} defaultValue="all">
                                     <option value="all">All Pokemon</option>
                                     <option value="created">Created</option>
                                     <option value="official">Official</option>
@@ -147,19 +147,19 @@ const Home = () => {
                                     return (
                                         <div>
                                             <div key={index}>
-                                                <button name={origin} key={origin} onClick={handleDeleteType}>{origin[0].toUpperCase() + origin.slice(1)}</button>
+                                                <button className={style.popupButton} name={origin} key={origin} onClick={handleDeleteType}>{origin[0].toUpperCase() + origin.slice(1)}</button>
                                             </div>
                                         </div>
                                     )
                                 })}                            
                             </div>
 
-                            <p>OR</p>
+                            <p className={style.filterTitle}>OR</p>
 
                             <div className={style.filterTypes}>
-                                <p>Type</p>
+                                <p className={style.filterTitle}>Type</p>
 
-                                <select disabled={disabledSelect} onChange={handleFilterType} defaultValue="all">
+                                <select className={style.selectType} disabled={disabledSelect} onChange={handleFilterType} defaultValue="all">
                                     <option value="all">All Types</option>
                                     {types.map(type => {
                                         return <option name={type.name} value={type.name} key={type.name}>{type.name.toUpperCase()}</option>
@@ -170,7 +170,7 @@ const Home = () => {
                                     return (
                                         <div>
                                             <div key={index}>
-                                                <button name={type} key={type} onClick={handleDeleteType}>{type.toUpperCase()}</button>
+                                                <button className={style.popupButtonType} name={type} key={type} onClick={handleDeleteType}>{type.toUpperCase()}</button>
                                             </div>
                                         </div>
                                     )

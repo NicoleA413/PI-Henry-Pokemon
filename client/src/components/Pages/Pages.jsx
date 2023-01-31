@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Cards from "../Cards/Cards";
 import { setCurrentPage } from "../../redux/actions";
+import style from "./Pages.module.css"
 
 const Pages = ()=>{
   const dispatch = useDispatch();
@@ -28,16 +29,30 @@ const Pages = ()=>{
     indexOfLastPokemon
   );
 
-  const pageNumbers = pages.map((numbers) => {
-    return (
-      <li
-      key={numbers}
-      id={numbers}
-      onClick={handleClick}
-      >
-      {numbers}
-      </li>
-    );
+  const pageNumbers = pages.map((number) => {
+    if(currentPage === number){
+      return (
+        <li
+        className={style.active}
+        key={number}
+        id={number}
+        onClick={handleClick}
+        >
+        {number}
+        </li>
+      );
+    }else{
+      return (
+        <li
+        className={style.number}
+        key={number}
+        id={number}
+        onClick={handleClick}
+        >
+        {number}
+        </li>
+      );
+    };
   });
     
   const handleNext = () => {
@@ -57,22 +72,22 @@ const Pages = ()=>{
   };
 
   return (
-    <>
-      <nav>
-        <ul>
+    <div className={style.mainContainer}>
+      <nav className={style.nav}>
+        <ul className={style.paginado} name="top">
           <li>
-            <button onClick={handlePrev}>PREV</button>
+            <button className={style.button} id="prev" onClick={handlePrev}>PREV</button>
           </li>
     
           {pageNumbers}
     
           <li>
-            <button onClick={handleNext}>NEXT</button>
+            <button className={style.button} id="next" onClick={handleNext}>NEXT</button>
           </li>
         </ul>
       </nav>
       
-      <div >
+      <div className={style.container}>
         {
           currentPage
           ? Cards(currentPokemons)
@@ -85,20 +100,20 @@ const Pages = ()=>{
         }
       </div>
     
-      <nav>
-        <ul>
+      <nav className={style.nav}>
+        <ul className={style.paginado} name="bottom">
           <li>
-            <button onClick={handlePrev}>PREV</button>
+            <button className={style.button} onClick={handlePrev}>PREV</button>
           </li>
     
           {pageNumbers}
     
           <li>
-            <button onClick={handleNext}>NEXT</button>
+            <button className={style.button} id="next" onClick={handleNext}>NEXT</button>
           </li>
         </ul>
       </nav>
-    </>
+    </div>
   );
     
 }

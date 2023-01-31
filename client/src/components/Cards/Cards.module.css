@@ -1,8 +1,8 @@
 .cards{
-    border:1px solid black;
+    border: 3px;
+    border-style:double;
     display: flex;
     flex-direction: row;
-    border-radius: 15px;
     flex-wrap: wrap;
     justify-content: space-around;
 };

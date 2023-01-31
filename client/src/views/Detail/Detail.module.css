@@ -6,6 +6,9 @@
     left:5%;
     margin-top: 12px;
     border-radius: 30px;
+    border: 5px;
+    border-style: double;
+    border-color: rgb(85, 38, 11);
 }
 
 .container{

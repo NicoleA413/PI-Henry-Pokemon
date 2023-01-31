@@ -3,6 +3,7 @@ import { useDispatch} from 'react-redux';
 import { NavLink, useHistory } from 'react-router-dom';
 import { getNamePokemon, getPokemons } from '../../redux/actions';
 import style from './NavBar.module.css';
+import reload from '../../styles/images/recargar.png'
 
 const NavBar = () => {
     const dispatch = useDispatch()
@@ -35,8 +36,8 @@ const NavBar = () => {
                 <NavLink to='/pokemons'><button className={style.buttonNav}>HOME</button></NavLink>
                 <div className={style.container}>
                     <input type="text" className={style.input} id="input" autoComplete="off" value={input} onChange={(event) => changeHandler(event)} placeholder="Find your pokemon..." />
-                    <button className={style.buttonSearch} onClick={submitHandler}>SEARCH</button>
-                    <button className={style.buttonReload} onClick={reloadHandler}>reload</button>
+                    <button className={style.buttonSearch} onClick={submitHandler} disabled={!input.length}>SEARCH</button>
+                    <button className={style.buttonReload} onClick={reloadHandler}><img className={style.reload} src={reload} alt="reload" /></button>
                 </div>
             
                 <NavLink to='/create'><button className={style.buttonNav}>CREATE POKEMON</button></NavLink>

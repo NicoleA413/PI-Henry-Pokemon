@@ -48,8 +48,6 @@ const Home = () => {
         if (value === "all") {
             dispatch(getPokemons());
         } else {
-            event.preventDefault();
-
             dispatch(filterByType(value));
         };
 
@@ -60,7 +58,6 @@ const Home = () => {
     };
 
     const handleDeleteType = (event) => {
-        event.preventDefault();
 
         setTypeSelect({
             type: [],

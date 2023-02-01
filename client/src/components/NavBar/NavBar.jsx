@@ -34,8 +34,9 @@ const NavBar = () => {
         return (
             <nav className={style.nav}>
                 <NavLink to='/pokemons'><button className={style.buttonNav}>HOME</button></NavLink>
+
                 <div className={style.container}>
-                    <input type="text" className={style.input} id="input" autoComplete="off" value={input} onChange={(event) => changeHandler(event)} placeholder="Find your pokemon..." />
+                    <input type="text" className={style.input} id="input" autoComplete="off" value={input} onChange={changeHandler} placeholder="Find your pokemon..." />
                     <button className={style.buttonSearch} onClick={submitHandler} disabled={!input.length}>SEARCH</button>
                     <button className={style.buttonReload} onClick={reloadHandler}><img className={style.reload} src={reload} alt="reload" /></button>
                 </div>

@@ -47,7 +47,7 @@ const rootReducer = (state = initialState, action) => {
         case GET_DETAIL:
             return {
                 ...state,
-                details: action.payload,
+                detail: action.payload,
             };
 
         case GET_DETAIL_FROM_STATE:

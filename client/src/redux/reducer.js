@@ -36,6 +36,7 @@ const rootReducer = (state = initialState, action) => {
                      ...state, 
                      pokemons: action.payload,
                      allPokemons: action.payload,
+                     currentPage: 1,
                 };
             } else {
                 return { 
@@ -167,6 +168,7 @@ const rootReducer = (state = initialState, action) => {
                 return {
                     ...state, 
                     pokemons: action.payload,
+                    currentPage: 1,
                 };
             } else {
                 return { 

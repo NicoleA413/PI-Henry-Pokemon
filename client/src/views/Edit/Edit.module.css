@@ -123,6 +123,7 @@
 }
 
 .select{
+    background-color: rgb(102, 114, 223);
     margin: 12px 0px;
     height: 27px;
     font-family: 'Banana';

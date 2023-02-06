@@ -187,7 +187,7 @@ const submitHandler = (event) =>{
 
                             {types.map((t) => {
                                 return (
-                                    <option name={t} value={t.name} key={t.name}>{t.name.toUpperCase()}</option>
+                                    <option name={t.name} value={t.name} key={t.name}>{t.name.toUpperCase()}</option>
                                 );
                             })}
                 

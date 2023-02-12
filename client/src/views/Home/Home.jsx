@@ -106,6 +106,7 @@ const Home = () => {
             return(
                 <div className={style.error}>
                 <h2>Oops, algo ha salido mal...</h2>
+                <p>{error}</p>
                 <button className={style.errorButton} onClick={handleDeleteType}>Return to Home</button>
                 </div>
             )
